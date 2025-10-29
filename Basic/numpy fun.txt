@@ -1,0 +1,2 @@
+numpy fun 
+pamdas series , dataframe , csv read and print
