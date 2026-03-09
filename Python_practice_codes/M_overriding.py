@@ -13,5 +13,6 @@ class daughter(father):
 s=son()
 s.son()
 
-d=daughter()
+d=father()
 d.daughter()
+

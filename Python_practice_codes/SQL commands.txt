@@ -1,0 +1,273 @@
+mysql> show  databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+mysql> create database students;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show  databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| students           |
+| sys                |
++--------------------+
+
+mysql> use students;
+Database changed
+
+mysql> create table students(name varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+1 row in set (0.01 sec)
+
+mysql> alter table students add roll int;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(10) | YES  |     | NULL    |       |
+| roll  | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table students add age int;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table students add city varchar(10);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(10) | YES  |     | NULL    |       |
+| roll  | int         | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
+| city  | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table students modify city varchar(25);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(10) | YES  |     | NULL    |       |
+| roll  | int         | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
+| city  | varchar(25) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table students change roll unique_id int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(10) | YES  |     | NULL    |       |
+| unique_id | int         | YES  |     | NULL    |       |
+| age       | int         | YES  |     | NULL    |       |
+| city      | varchar(25) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+mysql> alter table students add PRIMARY KEY (unique_id);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| name      | varchar(10) | YES  |     | NULL    |       |
+| unique_id | int         | NO   | PRI | NULL    |       |
+| age       | int         | YES  |     | NULL    |       |
+| city      | varchar(25) | YES  |     | NULL    |       |
+
++-----------+-------------+------+-----+---------+-------+
+mysql> CREATE TABLE PRODUCT_MASTER (
+         PRODUCTNO VARCHAR(6) PRIMARY KEY,
+         DESCRIPTION VARCHAR(15),
+        PROFITPERCENT DECIMAL(4,2),
+        UNITMEASURE VARCHAR(10),
+         QTYONHAND INT,
+         REORDERLVL INT,
+         SELLPRICE DECIMAL(8,2),
+         COSTPRICE DECIMAL(8,2)
+     );
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Exp 4.
+
+mysql> use Employees
+Database changed
+mysql> use Employees;
+Database changed
+mysql> CREATE TABLE Emp (
+    ->     EmpNo INT PRIMARY KEY,
+    ->     EmpName VARCHAR(50),
+    ->     Job VARCHAR(30),
+    ->     Basic DECIMAL(10,2),
+    ->     DA DECIMAL(10,2),
+    ->     HRA DECIMAL(10,2),
+    ->     PF DECIMAL(10,2),
+    ->     GrossPay DECIMAL(10,2),
+    ->     NetPay DECIMAL(10,2)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> show Employee
+    -> ;
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| students           |
+| sys                |
++--------------------+
+6 rows in set (0.02 sec)
+
+
+mysql> INSERT INTO Emp
+    -> VALUES (
+    ->     1,
+    ->     'Ravi',
+    ->     'Manager',
+    ->     10000,
+    ->     0.30 * 10000,
+    ->     0.40 * 10000,
+    ->     2000,
+    ->     10000 + (0.30*10000) + (0.40*10000),
+    ->     (10000 + (0.30*10000) + (0.40*10000)) - 2000
+    -> );
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM Emp;
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+| EmpNo | EmpName | Job     | Basic    | DA      | HRA     | PF      | GrossPay | NetPay   |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+|     1 | Ravi    | Manager | 10000.00 | 3000.00 | 4000.00 | 2000.00 | 17000.00 | 15000.00 |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp
+    ->     -> values(
+    ->     -> 1,
+    ->     -> 'pratik',
+    ->     -> 'manager',
+    ->     -> 20000,
+    ->     -> 0.30*20000,
+    ->     -> 0.40*20000,
+    ->     -> 4000,
+    ->     -> 20000+(0.30*20000)+(0.40*20000),
+    -> (20000+(0.30*20000)+(0.40*20000))-4000);
+
+mysql> INSERT INTO Emp
+    -> VALUES (
+    ->     2,
+    ->     'Pratik',
+    ->     'Manager',
+    ->     20000,
+    ->     0.30 * 20000,
+    ->     0.40 * 20000,
+    ->     4000,
+    ->     20000 + (0.30*20000) + (0.40*20000),
+    ->     (20000 + (0.30*20000) + (0.40*20000)) - 4000
+    -> );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Emp;
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+| EmpNo | EmpName | Job     | Basic    | DA      | HRA     | PF      | GrossPay | NetPay   |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+|     1 | Ravi    | Manager | 10000.00 | 3000.00 | 4000.00 | 2000.00 | 17000.00 | 15000.00 |
+|     2 | Pratik  | Manager | 20000.00 | 6000.00 | 8000.00 | 4000.00 | 34000.00 | 30000.00 |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO Emp
+    -> VALUES (
+    ->     3,
+    ->     'Rohit',
+    ->     'Manager',
+    ->     30000,
+    ->     0.30 * 30000,
+    ->     0.40 * 30000,
+    ->     2000,
+    ->     30000 + (0.30*30000) + (0.40*30000),
+    ->     (30000 + (0.30*30000) + (0.40*30000)) - 2000
+    -> );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Emp
+    -> VALUES
+    -> (4, 'Amit', 'Clerk', 8000, 2400, 3200, 1000, 13600, 12600),
+    -> (5, 'Neha', 'HR', 12000, 3600, 4800, 1500, 20400, 18900);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Emp;
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
+| EmpNo | EmpName | Job     | Basic    | DA      | HRA      | PF      | GrossPay | NetPay   |
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
+|     1 | Ravi    | Manager | 10000.00 | 3000.00 |  4000.00 | 2000.00 | 17000.00 | 15000.00 |
+|     2 | Pratik  | Manager | 20000.00 | 6000.00 |  8000.00 | 4000.00 | 34000.00 | 30000.00 |
+|     3 | Rohit   | Manager | 30000.00 | 9000.00 | 12000.00 | 2000.00 | 51000.00 | 49000.00 |
+|     4 | Amit    | Clerk   |  8000.00 | 2400.00 |  3200.00 | 1000.00 | 13600.00 | 12600.00 |
+|     5 | Neha    | HR      | 12000.00 | 3600.00 |  4800.00 | 1500.00 | 20400.00 | 18900.00 |
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
+
+mysql> update emp set netpay= netpay + 1200 where netpay>10000;
+Query OK, 5 rows affected (0.02 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> SELECT *
+    -> FROM Emp
+    -> WHERE GrossPay BETWEEN 10000 AND 20000;
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+| EmpNo | EmpName | Job     | Basic    | DA      | HRA     | PF      | GrossPay | NetPay   |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+|     1 | Ravi    | Manager | 10000.00 | 3000.00 | 4000.00 | 2000.00 | 17000.00 | 16200.00 |
+|     4 | Amit    | Clerk   |  8000.00 | 2400.00 | 3200.00 | 1000.00 | 13600.00 | 13800.00 |
++-------+---------+---------+----------+---------+---------+---------+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Emp;
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
+| EmpNo | EmpName | Job     | Basic    | DA      | HRA      | PF      | GrossPay | NetPay   |
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
+|     1 | Ravi    | Manager | 10000.00 | 3000.00 |  4000.00 | 2000.00 | 17000.00 | 16200.00 |
+|     2 | Pratik  | Manager | 20000.00 | 6000.00 |  8000.00 | 4000.00 | 34000.00 | 31200.00 |
+|     3 | Rohit   | Manager | 30000.00 | 9000.00 | 12000.00 | 2000.00 | 51000.00 | 50200.00 |
+|     4 | Amit    | Clerk   |  8000.00 | 2400.00 |  3200.00 | 1000.00 | 13600.00 | 13800.00 |
+|     5 | Neha    | HR      | 12000.00 | 3600.00 |  4800.00 | 1500.00 | 20400.00 | 20100.00 |
++-------+---------+---------+----------+---------+----------+---------+----------+----------+
