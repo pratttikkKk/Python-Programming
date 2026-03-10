@@ -81,8 +81,41 @@ class singlyLinkedList:
 					min = t.data
 				t=t.next
 		print("min is",min)
+  
+	def MaxValue(self):
+		if self.head == None:
+			print("no node available")
+		
+		else:
+			t=self.head
+			max=t.data
+			while t!=None:
+				if t.data > max:
+					max= t.data
+				t=t.next
+		print("max is",max)
 
-	 
+
+	def EvenValue(self):
+		if self.head == None:
+			print("no node available")
+			return
+		t=self.head
+		while t != None:
+			if t.data%2==0:
+				print(t.data)	
+			t=t.next
+	
+	def OddValue(self):
+		if self.head == None:
+			print("no node available")
+			return
+		t=self.head
+		while t != None:
+			if t.data%2==1:
+				print(t.data)	
+			t=t.next
+	
 s=singlyLinkedList()
 s.insertNOdeatFIrst()
 s.insertNOdeatFIrst()
@@ -90,9 +123,13 @@ s.insertNOdeatFIrst()
 # s.insertNOdeatFIrst()
 # s.insertNodeAtLast()
 # s.insertNodeAtLast()
-# # s.deleteFirst()
+# s.deleteFirst()
 # s.CountNode()
 # s.CountSum()
-# s.Display()
-s.MinValue()
-
+# # s.Display()
+# s.MinValue()
+# s.MaxValue()
+print("even number is: ")
+s.EvenValue()
+print("odd number is: ")
+s.OddValue()
